@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 23
@@ -21,5 +22,16 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+}
+
+publish {
+    userOrg = 'commit451'
+    groupId = 'com.commit451'
+    artifactId = 'NativeStackBlur'
+    version = '1.0.1'
+    description = 'Android StackBlur with gradle support (only for the native method) https://github.com/kikoso/android-stackblur'
+    website = 'https://github.com/Commit451/NativeStackBlur'
+    issueTracker = "https://github.com/Commit451/NativeStackBlur/issues"
+    repository = "https://github.com/Commit451/NativeStackBlur.git"
 }
 
