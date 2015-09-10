@@ -16,7 +16,7 @@ Easily reference the library in your Android projects using this dependency in y
 
 ```Gradle
 dependencies {
-    compile 'com.github.Commit451:NativeStackBlur:1.0'
+    compile 'com.github.Commit451:NativeStackBlur:1.0.1'
 }
 ```
 
@@ -30,7 +30,7 @@ Bitmap bm = NativeStackBlur.process(source, blurRadius);
 License
 --------
 
-    Copyright 2013 Commit 451
+    Copyright 2015 Commit 451
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
