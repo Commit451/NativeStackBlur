@@ -5,20 +5,12 @@ As you may see, kikoso has not yet provided a way to add StackBlur as a gradle d
 
 [![Build Status](https://travis-ci.org/Commit451/NativeStackBlur.svg?branch=master)](https://travis-ci.org/Commit451/NativeStackBlur)
 
-# Gradle Dependency (jitpack)
-
-Add JitPack to your repository dependencies:
-```Gradle
-repositories {
-  // ...
-  maven { url "https://jitpack.io" }
-}
-```
+# Gradle Dependency
 Easily reference the library in your Android projects using this dependency in your module's `build.gradle` file:
 
 ```Gradle
 dependencies {
-    compile 'com.github.Commit451:NativeStackBlur:1.0.1'
+    compile 'com.commit451:NativeStackBlur:1.0.1'
 }
 ```
 
