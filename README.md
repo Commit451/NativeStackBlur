@@ -3,6 +3,8 @@ Android StackBlur with gradle support (only for the native method) https://githu
 
 As you may see, kikoso has not yet provided a way to add StackBlur as a gradle dependency easily. This library is an attempt to make the NativeBlurProcess availible through gradle without the need to import any modules or do any other configuration.
 
+[![Build Status](https://travis-ci.org/Commit451/NativeStackBlur.svg?branch=master)](https://travis-ci.org/Commit451/NativeStackBlur)
+
 # Gradle Dependency (jitpack)
 
 Add JitPack to your repository dependencies:
