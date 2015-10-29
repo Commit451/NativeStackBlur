@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 8
         targetSdkVersion 23
-        versionCode 101
-        versionName "1.0.1"
+        versionCode 102
+        versionName "1.0.2"
     }
     buildTypes {
         release {
@@ -28,7 +28,7 @@ publish {
     userOrg = 'commit451'
     groupId = 'com.commit451'
     artifactId = 'NativeStackBlur'
-    version = '1.0.1'
+    version = '1.0.2'
     description = 'Android StackBlur with gradle support (only for the native method) https://github.com/kikoso/android-stackblur'
     website = 'https://github.com/Commit451/NativeStackBlur'
     issueTracker = "https://github.com/Commit451/NativeStackBlur/issues"
