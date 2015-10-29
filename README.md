@@ -21,6 +21,9 @@ Usage is similar to StackBlur, but also more streamlined:
 Bitmap bm = NativeStackBlur.process(source, blurRadius);
 ```
 
+# Compiling
+If you want to compile the original StackBlur lib for various reasons, such as adding more architecture support, simply pull down the original StackBlur repo, navigate to the StackBlur project folder (with the res and src folders) and run `ndk-build`. This should output all the .so files you need within the /libs folder. If you want to compile without worrying about renderscript, simply open up the `Android.mk` file and remove everything after the "Renderscript" comment.
+
 License
 --------
 
