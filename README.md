@@ -10,7 +10,7 @@ Easily reference the library in your Android projects using this dependency in y
 
 ```Gradle
 dependencies {
-    compile 'com.commit451:NativeStackBlur:1.0.1'
+    compile 'com.commit451:NativeStackBlur:1.0.2'
 }
 ```
 
