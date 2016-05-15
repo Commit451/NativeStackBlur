@@ -14,6 +14,10 @@ dependencies {
 }
 ```
 
+This library is provided as a "fat" aar with native binaries for all available architectures. To
+reduce your APK size, use the ABI filtering/splitting techniques in the Android plugin:
+http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits
+
 # Usage
 Usage is similar to StackBlur, but also more streamlined:
 
