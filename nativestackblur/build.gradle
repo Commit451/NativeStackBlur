@@ -1,15 +1,14 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
 
     defaultConfig {
         minSdkVersion 8
-        targetSdkVersion 23
-        versionCode 102
-        versionName "1.0.2"
+        targetSdkVersion 24
+        versionCode 100
+        versionName "1.0"
     }
     buildTypes {
         release {
@@ -17,21 +16,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['libs']
-        }
-    }
 }
 
-publish {
-    userOrg = 'commit451'
-    groupId = 'com.commit451'
-    artifactId = 'NativeStackBlur'
-    version = '1.0.2'
-    description = 'Android StackBlur with gradle support (only for the native method) https://github.com/kikoso/android-stackblur'
-    website = 'https://github.com/Commit451/NativeStackBlur'
-    issueTracker = "https://github.com/Commit451/NativeStackBlur/issues"
-    repository = "https://github.com/Commit451/NativeStackBlur.git"
-}
+apply from: 'https://raw.githubusercontent.com/Commit451/gradle-android-javadocs/1.0.0/gradle-android-javadocs.gradle'
+
 
