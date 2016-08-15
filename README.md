@@ -37,7 +37,7 @@ Bitmap bm = NativeStackBlur.process(source, blurRadius);
 ```
 
 # Compiling
-If you want to compile the original StackBlur lib for various reasons, such as adding more architecture support, simply pull down the original StackBlur repo, navigate to the StackBlur project folder (with the res and src folders) and run `ndk-build`. This should output all the .so files you need within the /libs folder. If you want to compile without worrying about renderscript, simply open up the `Android.mk` file and remove everything after the "Renderscript" comment.
+If you want to compile the original StackBlur lib for various reasons, such as adding more architecture support, simply pull down the original StackBlur repo, navigate to the StackBlur project folder (with the res and src folders). Delete the `x86` and other folders containing `.so` files. Also, remove the `<uses-sdk` block from the manifest. You will probably also get errors relating to LOCAL_SRC_FILES pointing to a missing file. Since we do not support Renderscript, just open up the `Android.mk` file and remove the `ifneq` block. Now, run `ndk-build`. This should output all the .so files you need within the /libs folder (ignoring the renderscript-v8.jar). This process works with commit cf19121553f50f346c48eabc7ebf04d27b074f17 of [android-stackblur](https://github.com/kikoso/android-stackblur)
 
 License
 --------
