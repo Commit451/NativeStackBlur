@@ -12,8 +12,9 @@ import java.util.concurrent.Executors;
  */
 public class NativeBlurProcess {
 
-	static final int EXECUTOR_THREADS = Runtime.getRuntime().availableProcessors();
-	static final ExecutorService EXECUTOR = Executors.newFixedThreadPool(EXECUTOR_THREADS);
+	private static final int EXECUTOR_THREADS = Runtime.getRuntime().availableProcessors();
+	private static final ExecutorService EXECUTOR = Executors.newFixedThreadPool(EXECUTOR_THREADS);
+	//May look like an error, but it will resolve when compiling and finds the .so
 	private static native void functionToBlur(Bitmap bitmapOut, int radius, int threadCount, int threadIndex, int round);
 
 	static {
@@ -25,8 +26,8 @@ public class NativeBlurProcess {
 
 		int cores = EXECUTOR_THREADS;
 
-		ArrayList<NativeTask> horizontal = new ArrayList<NativeTask>(cores);
-		ArrayList<NativeTask> vertical = new ArrayList<NativeTask>(cores);
+		ArrayList<NativeTask> horizontal = new ArrayList<>(cores);
+		ArrayList<NativeTask> vertical = new ArrayList<>(cores);
 		for (int i = 0; i < cores; i++) {
 			horizontal.add(new NativeTask(bitmapOut, (int) radius, cores, i, 1));
 			vertical.add(new NativeTask(bitmapOut, (int) radius, cores, i, 2));
@@ -66,6 +67,5 @@ public class NativeBlurProcess {
 			functionToBlur(_bitmapOut, _radius, _totalCores, _coreIndex, _round);
 			return null;
 		}
-
 	}
 }

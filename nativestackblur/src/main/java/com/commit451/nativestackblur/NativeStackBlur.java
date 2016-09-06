@@ -6,12 +6,11 @@ import com.enrique.stackblur.NativeBlurProcess;
 
 /**
  * Processes bitmaps using native StackBlur library
- * Created by John on 9/10/15.
  */
 public class NativeStackBlur {
 
     /**
-     * Process the bitmap natively
+     * Blur the bitmap natively, synchronously.
      * @param bitmap the bitmap to apply blur to
      * @param radius the radius of the blur
      * @return a blurred bitmap

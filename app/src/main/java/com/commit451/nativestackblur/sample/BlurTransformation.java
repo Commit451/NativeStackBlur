@@ -6,7 +6,7 @@ import com.commit451.nativestackblur.NativeStackBlur;
 import com.squareup.picasso.Transformation;
 
 /**
- * Created by John on 9/10/15.
+ * Example usage with Picasso
  */
 public class BlurTransformation implements Transformation {
 

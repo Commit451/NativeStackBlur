@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         Picasso.with(this)
                 .load("http://www.androidcentral.com/sites/androidcentral.com/files/styles/large/public/article_images/2014/10/lollipop-statue-2.jpg?itok=RC1ovcEz")
-                .transform(new BlurTransformation(5))
+                .transform(new BlurTransformation(8))
                 .into(mBlurredImage);
     }
 }
