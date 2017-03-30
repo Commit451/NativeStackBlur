@@ -11,9 +11,11 @@ public class NativeStackBlur {
 
     /**
      * Blur the bitmap natively, synchronously.
+     *
      * @param bitmap the bitmap to apply blur to
      * @param radius the radius of the blur
-     * @return a blurred bitmap
+     * @return a blurred bitmap. If the process fails, it will return the same bitmap as what was
+     * passed
      */
     public static Bitmap process(Bitmap bitmap, int radius) {
         NativeBlurProcess blur = new NativeBlurProcess();

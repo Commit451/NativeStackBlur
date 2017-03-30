@@ -12,60 +12,61 @@ import java.util.concurrent.Executors;
  */
 public class NativeBlurProcess {
 
-	private static final int EXECUTOR_THREADS = Runtime.getRuntime().availableProcessors();
-	private static final ExecutorService EXECUTOR = Executors.newFixedThreadPool(EXECUTOR_THREADS);
-	//May look like an error, but it will resolve when compiling and finds the .so
-	private static native void functionToBlur(Bitmap bitmapOut, int radius, int threadCount, int threadIndex, int round);
+    private static final int EXECUTOR_THREADS = Runtime.getRuntime().availableProcessors();
+    private static final ExecutorService EXECUTOR = Executors.newFixedThreadPool(EXECUTOR_THREADS);
 
-	static {
-		System.loadLibrary("blur");
-	}
+    //May look like an error, but it will resolve when compiling and finds the .so
+    private static native void functionToBlur(Bitmap bitmapOut, int radius, int threadCount, int threadIndex, int round);
 
-	public Bitmap blur(Bitmap original, float radius) {
-		Bitmap bitmapOut = original.copy(Bitmap.Config.ARGB_8888, true);
+    static {
+        System.loadLibrary("blur");
+    }
 
-		int cores = EXECUTOR_THREADS;
+    public Bitmap blur(Bitmap original, float radius) {
+        Bitmap bitmapOut = original.copy(Bitmap.Config.ARGB_8888, true);
 
-		ArrayList<NativeTask> horizontal = new ArrayList<>(cores);
-		ArrayList<NativeTask> vertical = new ArrayList<>(cores);
-		for (int i = 0; i < cores; i++) {
-			horizontal.add(new NativeTask(bitmapOut, (int) radius, cores, i, 1));
-			vertical.add(new NativeTask(bitmapOut, (int) radius, cores, i, 2));
-		}
+        int cores = EXECUTOR_THREADS;
 
-		try {
-			EXECUTOR.invokeAll(horizontal);
-		} catch (InterruptedException e) {
-			return bitmapOut;
-		}
+        ArrayList<NativeTask> horizontal = new ArrayList<>(cores);
+        ArrayList<NativeTask> vertical = new ArrayList<>(cores);
+        for (int i = 0; i < cores; i++) {
+            horizontal.add(new NativeTask(bitmapOut, (int) radius, cores, i, 1));
+            vertical.add(new NativeTask(bitmapOut, (int) radius, cores, i, 2));
+        }
 
-		try {
-			EXECUTOR.invokeAll(vertical);
-		} catch (InterruptedException e) {
-			return bitmapOut;
-		}
-		return bitmapOut;
-	}
+        try {
+            EXECUTOR.invokeAll(horizontal);
+        } catch (InterruptedException e) {
+            return bitmapOut;
+        }
 
-	private static class NativeTask implements Callable<Void> {
-		private final Bitmap _bitmapOut;
-		private final int _radius;
-		private final int _totalCores;
-		private final int _coreIndex;
-		private final int _round;
+        try {
+            EXECUTOR.invokeAll(vertical);
+        } catch (InterruptedException e) {
+            return bitmapOut;
+        }
+        return bitmapOut;
+    }
 
-		public NativeTask(Bitmap bitmapOut, int radius, int totalCores, int coreIndex, int round) {
-			_bitmapOut = bitmapOut;
-			_radius = radius;
-			_totalCores = totalCores;
-			_coreIndex = coreIndex;
-			_round = round;
-		}
+    private static class NativeTask implements Callable<Void> {
+        private final Bitmap _bitmapOut;
+        private final int _radius;
+        private final int _totalCores;
+        private final int _coreIndex;
+        private final int _round;
 
-		@Override
-		public Void call() throws Exception {
-			functionToBlur(_bitmapOut, _radius, _totalCores, _coreIndex, _round);
-			return null;
-		}
-	}
+        public NativeTask(Bitmap bitmapOut, int radius, int totalCores, int coreIndex, int round) {
+            _bitmapOut = bitmapOut;
+            _radius = radius;
+            _totalCores = totalCores;
+            _coreIndex = coreIndex;
+            _round = round;
+        }
+
+        @Override
+        public Void call() throws Exception {
+            functionToBlur(_bitmapOut, _radius, _totalCores, _coreIndex, _round);
+            return null;
+        }
+    }
 }
