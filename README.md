@@ -42,7 +42,7 @@ If you want to compile the original StackBlur lib for various reasons, such as a
 License
 --------
 
-    Copyright 2019 Commit 451
+    Copyright 2020 Commit 451
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
