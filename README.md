@@ -3,7 +3,7 @@ Android StackBlur with gradle support (only for the native method) https://githu
 
 As you may see, kikoso has not yet provided a way to add StackBlur as a gradle dependency easily. This library is an attempt to make the NativeBlurProcess availible through gradle without the need to import any modules or do any other configuration.
 
-[![Build Status](https://travis-ci.org/Commit451/NativeStackBlur.svg?branch=master)](https://travis-ci.org/Commit451/NativeStackBlur)  [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-NativeStackBlur-green.svg?style=flat)](https://android-arsenal.com/details/1/2495) [![](https://jitpack.io/v/Commit451/NativeStackBlur.svg)](https://jitpack.io/#Commit451/NativeStackBlur)
+[![](https://jitpack.io/v/Commit451/NativeStackBlur.svg)](https://jitpack.io/#Commit451/NativeStackBlur)
 
 # Gradle Dependency
 
@@ -21,7 +21,7 @@ allprojects {
 Then, add the library to your project `build.gradle`
 ```gradle
 dependencies {
-    implementation 'com.github.Commit451:NativeStackBlur:1.0.5'
+    implementation("com.github.Commit451:NativeStackBlur:latest.version.here")
 }
 ```
 
@@ -32,7 +32,7 @@ http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits
 # Usage
 Usage is similar to StackBlur, but also more streamlined:
 
-```java
+```
 Bitmap bm = NativeStackBlur.process(source, blurRadius);
 ```
 
@@ -42,7 +42,7 @@ If you want to compile the original StackBlur lib for various reasons, such as a
 License
 --------
 
-    Copyright 2020 Commit 451
+    Copyright 2022 Commit 451
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
